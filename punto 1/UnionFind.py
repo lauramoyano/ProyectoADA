@@ -24,7 +24,7 @@ class UnionFind:
     def is_same_group(self, x, y):
         return self.find(x) == self.find(y)
         
-with open("./input.txt", "r") as input_file:
+with open("./input3.txt", "r") as input_file:
     n, q = map(int, input_file.readline().split())
     uf = UnionFind(n)
 
@@ -37,5 +37,5 @@ with open("./input.txt", "r") as input_file:
                 uf.union(i, a - 1)
         elif query == 3:
             res = "true" if uf.is_same_group(a - 1, b - 1) else "false"
-            with open("./output.txt", "a") as output_file:
+            with open("./output3.txt", "a") as output_file:
                 output_file.write(res + "\n")
