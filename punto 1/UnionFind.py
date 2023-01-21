@@ -1,3 +1,4 @@
+import time 
 class UnionFind:
     def __init__(self, n):
         self.parents = [i for i in range(n)]
@@ -23,7 +24,9 @@ class UnionFind:
     
     def is_same_group(self, x, y):
         return self.find(x) == self.find(y)
-        
+
+start_time = time.time()
+
 with open("./input3.txt", "r") as input_file:
     n, q = map(int, input_file.readline().split())
     uf = UnionFind(n)
@@ -39,3 +42,8 @@ with open("./input3.txt", "r") as input_file:
             res = "true" if uf.is_same_group(a - 1, b - 1) else "false"
             with open("./output3.txt", "a") as output_file:
                 output_file.write(res + "\n")
+
+end_time = time.time()
+
+elapsed_time = end_time - start_time
+print("El tiempo que demoro su ejecucion es", elapsed_time)
