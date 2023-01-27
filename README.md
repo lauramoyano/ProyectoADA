@@ -3,7 +3,7 @@
 - LAURA MOYANO GONZALEZ 2023906-3743
 - *Ejercicios desarrollados con estructuras de datos no convencionales. La estructura de datos son: Disjoint Set Union o Union-Find y Prefix Tree*
 
-#Funcionamiento:
+# Funcionamiento:
 Debe adjuntar los archivos de entrada en la carpeta input y correr el programa con los comandos:
 
 Para el problema 1:
