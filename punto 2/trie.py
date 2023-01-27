@@ -1,3 +1,4 @@
+import os
 class TrieNode:
     def __init__(self):
         self.children = {}
@@ -49,22 +50,38 @@ class Trie:
           return self.getword(current)
 
 
+# Nombre de la carpeta de entrada
+input_folder = 'input'
 
-with open("input2.txt", "r") as input_file:
-    n = int(input_file.readline())
-    trie = Trie()
-    results = []
-    
-    # Abrir el archivo de salida antes del bucle
-    with open('output2.txt', 'w') as output_file:
-        for _ in range(n):
-            op, word = input_file.readline().split()
-            if op == '1':
-                trie.insert(word)
-            elif op == '2':
-                prefix = trie.predict_word(word)
-                results.append(prefix)
-                output_file.write(prefix + '\n')
+# Nombre de la carpeta de salida
+output_folder = 'output'
+
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
+for filename in os.listdir(input_folder):
+  nombre_archivo, extension = os.path.splitext(filename)
+  outputfilename = nombre_archivo + "-salida.txt"
+  # Crear la ruta completa del archivo
+  input_path = os.path.join(input_folder, filename)
+  # Crear la ruta completa de la carpeta de salida
+  output_path = os.path.join(output_folder, outputfilename)
+
+  with open(input_path, "r") as input_file:
+      n = int(input_file.readline())
+      trie = Trie()
+      results = []
+      
+      # Abrir el archivo de salida antes del bucle
+      with open(output_path, 'a') as output_file:
+          for _ in range(n):
+              op, word = input_file.readline().split()
+              if op == '1':
+                  trie.insert(word)
+              elif op == '2':
+                  prefix = trie.predict_word(word)
+                  results.append(prefix)
+                  output_file.write(prefix + '\n')
    
 
    
